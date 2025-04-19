@@ -10,3 +10,6 @@
 8. terdapat CRUD pada setiap struct yang sudah dibuat (Create, Read, Update, Delete)
 9. Pull Request ke folder TugasBesar
 10. Presentasikan (Nilai TB akan dijadikan nilai akhir - UAS)
+
+
+    ## Silahkan Upload progress TB sampai UAS
