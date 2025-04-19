@@ -1,3 +1,7 @@
+![image](https://github.com/user-attachments/assets/ab2266c5-1c34-4f83-b477-2faeb3709f13)
+![image](https://github.com/user-attachments/assets/d284b6d8-16bc-4814-9e8d-330693a21c51)
+
+
 ## Project Base (PB) 1
 
 1. Buat Projectbase sesuai studi kasus masing-masing, Contoh : penggunaan API data Koleksi Geologi (Judul PB dideskripsikan pada Readme.md)
