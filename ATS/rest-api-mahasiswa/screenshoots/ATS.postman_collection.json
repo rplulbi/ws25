@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "6440ab68-2556-4176-bf4a-11c66d427ab8",
+		"name": "ATS",
+		"description": "RESTful API sederhana",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26419124"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/mahasiswa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/mahasiswa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mahasiswa"
+					]
+				},
+				"description": "Tampilkan semua mahasiswa"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/mahasiswa/682a17575db222f79e526797",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/mahasiswa/682a17575db222f79e526797",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mahasiswa",
+						"682a17575db222f79e526797"
+					]
+				},
+				"description": "Detail satu mahasiswa"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/mahasiswa/682a17575db222f79e526797",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nama\": \"Yadi Mulyadi\",\r\n  \"npm\": \"714222074\",\r\n  \"prodi\": \"D4 Teknik Informatika\",\r\n  \"angkatan\": 2024,\r\n  \"program\": \"RPL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/mahasiswa/682a17575db222f79e526797",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mahasiswa",
+						"682a17575db222f79e526797"
+					]
+				},
+				"description": "Update data mahasiswa"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/mahasiswa/682a22975db222f79e5267a4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/mahasiswa/682a22975db222f79e5267a4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mahasiswa",
+						"682a22975db222f79e5267a4"
+					]
+				},
+				"description": "Hapus data mahasiswa"
+			},
+			"response": []
+		}
+	]
+}
