@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Inventaris Buku Profesional</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 2em 0;
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 900px;
+            width: 95%;
+            background-color: #ffffff;
+            padding: 2.5em;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            margin-bottom: 2em;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 1em;
+        }
+
+        header img {
+            width: 50px;
+            height: 50px;
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #1a237e;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 1em;
+            color: #3f51b5;
+        }
+        
+        main {
+            display: grid;
+            gap: 2em;
+        }
+
+        /* Styling Form */
+        #book-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1em;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #book-form label {
+            margin-bottom: 0.5em;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        #book-form input {
+            width: 100%;
+            padding: 0.8em;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        #book-form input:focus {
+            outline: none;
+            border-color: #3f51b5;
+            box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.2);
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1; /* Span full width */
+        }
+
+        /* Styling Tombol */
+        .btn {
+            padding: 0.8em 1.5em;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            color: white;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background-color: #3f51b5;
+            grid-column: 1 / -1; /* Tombol simpan full width */
+        }
+        .btn-primary:hover { background-color: #303f9f; }
+
+        .btn-edit { background-color: #0288d1; margin-right: 0.5em;}
+        .btn-edit:hover { background-color: #0277bd; }
+
+        .btn-delete { background-color: #d32f2f; }
+        .btn-delete:hover { background-color: #c62828; }
+
+
+        /* Styling Tabel */
+        .table-wrapper {
+            overflow-x: auto; /* Untuk responsif di layar kecil */
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+
+        th, td {
+            padding: 1em;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        thead th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f3f5;
+        }
+        
+        td:last-child {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #book-form {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="/static/iday.png" alt="Logo Buku">
+            <h1>Sistem Inventaris Buku</h1>
+        </header>
+
+        <main>
+            <section id="form-section">
+                <h2>Manajemen Buku</h2>
+                <form id="book-form">
+                    <input type="hidden" id="book-id">
+                    <div class="form-group">
+                        <label for="judul">Judul Buku</label>
+                        <input type="text" id="judul" placeholder="cth: Laskar Pelangi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="penulis">Penulis</label>
+                        <input type="text" id="penulis" placeholder="cth: Andrea Hirata" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tahun">Tahun Terbit</label>
+                        <input type="number" id="tahun" placeholder="cth: 2005" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn btn-primary">Simpan Buku</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="table-section">
+                <h2>Daftar Buku</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Judul</th>
+                                <th>Penulis</th>
+                                <th>Tahun</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="book-list">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const apiUrl = 'http://localhost:8080/buku';
+        const bookForm = document.getElementById('book-form');
+        const bookList = document.getElementById('book-list');
+
+        // Fungsi untuk mengambil dan menampilkan semua buku
+        async function getBooks() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Network response was not ok');
+                const books = await response.json();
+                
+                bookList.innerHTML = ''; // Kosongkan tabel dulu
+                if (books) {
+                    books.forEach(book => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${book.judul}</td>
+                            <td>${book.penulis}</td>
+                            <td>${book.tahun_terbit}</td>
+                            <td>
+                                <button class="btn btn-edit" onclick="editBook('${book.id}', '${book.judul}', '${book.penulis}', ${book.tahun_terbit})">Edit</button>
+                                <button class="btn btn-delete" onclick="deleteBook('${book.id}')">Hapus</button>
+                            </td>
+                        `;
+                        bookList.appendChild(row);
+                    });
+                }
+            } catch (error) {
+                console.error('Gagal mengambil data buku:', error);
+                bookList.innerHTML = '<tr><td colspan="4" style="text-align:center;">Gagal memuat data. Pastikan server backend berjalan.</td></tr>';
+            }
+        }
+
+        // Fungsi untuk menghapus buku
+        async function deleteBook(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus buku ini?')) {
+                await fetch(`${apiUrl}/${id}`, { method: 'DELETE' });
+                getBooks(); // Muat ulang daftar buku
+            }
+        }
+        
+        // Fungsi untuk menyiapkan form edit
+        function editBook(id, judul, penulis, tahun) {
+            document.getElementById('book-id').value = id;
+            document.getElementById('judul').value = judul;
+            document.getElementById('penulis').value = penulis;
+            document.getElementById('tahun').value = tahun;
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' }); // Auto scroll ke form
+        }
+
+        // Event listener untuk form submit (Create dan Update)
+        bookForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('book-id').value;
+            const judul = document.getElementById('judul').value;
+            const penulis = document.getElementById('penulis').value;
+            const tahun = parseInt(document.getElementById('tahun').value);
+
+            const book = { judul, penulis, tahun_terbit: tahun };
+
+            let method = 'POST';
+            let url = apiUrl;
+
+            // Jika ada ID, berarti ini adalah proses UPDATE
+            if (id) {
+                method = 'PUT';
+                url = `${apiUrl}/${id}`;
+            }
+
+            await fetch(url, {
+                method: method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(book)
+            });
+
+            bookForm.reset(); // Kosongkan form
+            document.getElementById('book-id').value = ''; // Hapus ID tersembunyi
+            getBooks(); // Muat ulang daftar buku
+        });
+
+        // Panggil fungsi getBooks saat halaman pertama kali dimuat
+        document.addEventListener('DOMContentLoaded', getBooks);
+    </script>
+</body>
+</html>
